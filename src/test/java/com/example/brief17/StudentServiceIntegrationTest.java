@@ -2,6 +2,7 @@ package com.example.brief17;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -15,8 +16,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Optional;
 
 
+
 @DataJpaTest
 @Import(StudentService.class)
+
 @ActiveProfiles("test")
 
 class StudentServiceIntegrationTest {
@@ -40,7 +43,9 @@ class StudentServiceIntegrationTest {
         // Vérifier que le student est bien présent
         assertThat(studentById).isPresent();
 
+
         // Comparer les attributs de l'objet sauvegardé et récupéré
+
         assertThat(studentById.get().getId()).isEqualTo(savedStudent.getId());
         assertThat(studentById.get().getName()).isEqualTo(savedStudent.getName());
         assertThat(studentById.get().getAddress()).isEqualTo(savedStudent.getAddress());
