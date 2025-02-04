@@ -1,0 +1,20 @@
+# TODO: DÃ©finir la configuration H2
+
+# H2 Configuration
+spring:
+  h2:
+    console:
+      path: /h2-console
+  application:
+    name: brief17-test-integration
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
+
+
