@@ -1,0 +1,29 @@
+name: tests
+
+on:
+    push:
+      branches:
+      - main
+jobs:
+  testSpring:
+    #Etape 1 -> faire tourner sur la dernière version d'ubuntu
+    runs-on: ubuntu-latest
+    
+    steps:
+      #Etape 2 -> chargler le projet sur l'environement github
+      - name: Checkout
+        uses: actions/checkout@v4
+        #Etape 3 -> charger la version de java pour que ca puisse tourner
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: "temurin"
+        #Etape 4 -> charger les dépendances maven
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.8.2
+        #Etape 5 -> lancer les tests d'intégration du projet
+      - name: Build with maven
+        run: mvn verify
